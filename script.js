@@ -15,3 +15,7 @@
 // api.analyzeARecipeSearchQuery(q, callback);
 
 console.log(10+10);
+
+function closeDoor() {
+    document.getElementById("opening").style.width = "0%";
+}

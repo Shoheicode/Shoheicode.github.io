@@ -1,55 +1,87 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body{
-                font-family: Arial;
-                background-color: blue;
-            }
-            .right {
-                background-color: red;
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 20px 22px;
-                text-decoration: none;
-            }
-            li{
-                display: flex;
-                flex-direction: column;
-                float: right;
-                list-style: none;
-
-            }
-            .right li {
-                border-left:1px solid #bbb;
-            }
-            li a{
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 20px 22px;
-                text-decoration: none;
-            }
-            li a:hover{
-                background-color: green;
-            }
-            
-
-        </style>
+        <script src="script.js"></script>
+        <link  href="stylesheet.css" rel="stylesheet" />
+        <title>MonkeyAtKeyboardTyping</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+        
     </head>
-    <body>
-        <ul class = "right">
-            <li><a href = "www.google.com">Hi</a></li>
-            <li><a href = "home.html">Hello</a></li>
-            <li>lllll</li>
-        </ul>
-        <h1>
-            Hello
-        </h1>
-        <img href = "">
-        <p>
-            
-        </p>
+    <body id = "back">
+        <!-- Overlay at start -->
+        <div id = "opening" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeDoor()">&times;</a>
+            <div class="typing">
+            <h1>Welcome to </h1>
+            <h1>ShoheiCode Website</h1>
+            </div>
+          </div>
+
+            <div id="myDiv">
+                <div class = "sidenavbar">
+                    <a href = "#FORMS" id="home">Home</a>
+                    <a href = "Projects" id = "project">Projects</a>
+                    <a href = "#aboutPage" id="about">About</a>
+                    
+                </div>
+
+                <section class="sections">
+                <div class="content">
+                    <div id = "FORMS" class = "forms">
+                        <form action="/output">
+
+                            <textarea id="text-input" name="text-input" placeholder="Text" rows="20"></textarea>
+
+                            <button id="submit-btn" class="press" type = "submit">Submit</button>
+                            </form>
+                    </div>
+                </div>
+
+                <div class="output"></div>
+
+                </section>
+
+                <section class="sections1">
+                    <div id = "aboutPage" class = "content">
+                        <h1>Project Entails</h1>
+                        <h2>Front End</h2>
+                        <p>
+                            We used HTML, CSS, a bit of Javascript to create our Front End Environment.
+                            Through this, we focused on creating a interactive interface and while
+                            showing a welcoming interface that uses animations and understanding of 
+                            formating and creative UI.
+                        </p>
+                        <h2>Back End</h2>
+                        <p>
+                            We used python and a natural language machine learning model to analyze and 
+                            break down the text into the important pieces of information that are necessary
+                            when trying to figure out long amounts of text. We also used models for reading
+                            pdf to be able to break down not only text, but documents as well which can be 
+                            extremely useful for long study sessions.
+                        </p>
+    
+                    </div>
+                </section>
+    
+                <footer class="content">
+                    <div class="container">
+                        <div>
+                            <img class="monkey">
+                        </div>
+                        <div class = "part1">
+                            <h3>Brave Monkeys</h3>
+                            <ul>
+                                <li>Jason</li>
+                                <li>Jonathan</li>
+                                <li>Diego</li>
+                                <li>Victor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+        </div>
+
     </body>
 </html>
