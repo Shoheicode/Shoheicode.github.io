@@ -1,0 +1,60 @@
+/*Overlay*/
+
+.overlay{
+    height: 100%;
+    position:fixed;
+    top: 0;
+    left:0;
+    z-index: 3;
+    background-color: rgba(0,0,0, 0.7);
+    transition: 0.5s;
+}
+
+#opening{
+    width: 100%;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    text-decoration: none;
+    color:white;
+}
+
+/*Typing*/
+
+.typing{
+    padding:20px 30px;
+    font-size:35px;
+    font-family:monospace;
+    border-radius:50px;
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.typing h1{
+    color:green;
+    margin:0px;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 4s steps(22,end) forwards,
+            blink 1s;
+}
+
+@keyframes typing {
+    0% { width:0% }
+    100% { width:100% }
+  }
+  @keyframes blink {
+    0%,100% {
+      border-right:2px solid transparent;
+    }
+    50% {
+      border-right:2px solid #222;
+    }
+  }

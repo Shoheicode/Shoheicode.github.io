@@ -19,12 +19,14 @@
 
     <!-- StyleSheets -->
 
-    <link rel="stylesheet" href="Files\StyleFiles\style.css" />
-    <link rel="stylesheet" href="Files\StyleFiles\opening.css">
-    <link rel="stylesheet" href="Files\StyleFiles\index.css">
+    <link rel="stylesheet" href="StyleFiles\style.css" />
+    <link rel="stylesheet" href="StyleFiles\opening.css">
+    <link rel="stylesheet" href="StyleFiles\index.css">
 
     <!-- Javascript Files -->
-    <script type="text/javascript" src="Files\ScriptsFiles\scripts.js"></script>
+    <script type="text/javascript" src="ScriptsFiles\scripts.js">
+    </script>
+    <script type="text/javascript" src="ScriptsFiles\courses.js"></script>
 </head>
 
 <!--
@@ -46,16 +48,8 @@ Clubs
 
 <body>
 
-    <div id = "opening" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeDoor()">&times;</a>
-        <div class="typing">
-        <h1>Welcome to </h1>
-        <h1>Shohei's Catalog Website</h1>
-        </div>
-      </div>
-
       <nav id = "sideNavBar" class="sideNavigation">
-        <a href = "Files\home.html">El Camino Catalog</a>
+        <a href = "home.html">El Camino Catalog</a>
         <div class="dropdown">
             <button class="dropButton"> Catalog <i class="fa fa-caret-down"></i></button>
             <div class="content">
@@ -74,12 +68,10 @@ Clubs
         <h2> Where you can find all sorts of cool things</h2>
         </div>
     </div>
-    <!-- <div id="searchArea">
-        <form onsubmit="click()">
-            <input id="searchPart" type="text" placeholder="Search" name = "searchbar">
-        </form>
-    </div> -->
-    <!-- <div id="card-container">
+    <div id="searchArea">
+        <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="filterCourses()">
+    </div>
+    <div id="card-container">
         
     </div>
     <div class="card" style="display: none;">
@@ -92,9 +84,6 @@ Clubs
                 <li>Bullet Point 3</li>
             </ul>
         </div>
-    </div> -->
-    <div>
-
     </div>
     <div class="footer">
         <button onclick="quoteAlert();">
