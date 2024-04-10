@@ -1,6 +1,7 @@
 /*Stylesheet for the index file and html file*/
 
 /* For the body and html */
+
 html,
 body {
     margin: 0;
@@ -44,32 +45,28 @@ body {
     opacity: 2;
 }
 
-/*
+/*Section Area*/
 
-Section Areas
-
-*/
-
-.section{
+.courseSection{
     display: flex;
     background-color: #5174cf;
     
 }
 
-#sectionImage{
-    width: 70%;
-    min-height: 700px;
+#courseSImage{
+    width: 45%;
+    min-height: 600px;
     background-size: cover;
 }
 
-#sectiondiv{
+#courseSdiv{
     padding: 5%;
     color:white;
     font-family: "Space Mono", monospace;
     font-weight: 700;
     font-style: normal;
 }
-#sectiondiv a{
+#courseSdiv a{
     text-decoration: none;
     color: white;
     border-color: black;
@@ -77,23 +74,9 @@ Section Areas
     border-width: 5px;
     
 }
-#sectiondiv a:hover{
+
+#courseSdiv a:hover{
     background-color: lightblue;
-}
-
-.programsC{
-    display: flex;;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.programLogo{
-    width:100%;
-    max-height: 800px;
-}
-#MESA{
-    padding-top:30px;
 }
 
 /*Footer*/

@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles">
+    <title>El Camino Courses Catalog</title>
+    <meta name="description" content="Catalog for El Camino Courses">
 
     <!--Font Family-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,46 +21,28 @@
 
     <link rel="stylesheet" href="StyleFiles\courses.css" />
     <link rel="stylesheet" href="StyleFiles\opening.css">
-    <link rel="stylesheet" href="StyleFiles\index.css">
+    <link rel="stylesheet" href="StyleFiles\navbar.css">
 
     <!-- Javascript Files -->
     <script type="module">
       </script>
     <script type="text/javascript" src="ScriptsFiles\scripts.js">
     </script>
-    <script type ="text/javascript"src="ScriptsFiles\courses.js"></script>
+    <script type ="text/javascript"src="ScriptsFiles\courses.js">
+        let icon = document.querySelector('ion-icon');
+    icon.onclick = function(){
+    icon.classList.toggle('active');
+    }
+    </script>
 </head>
-
-<!--
-
-Things to implment:
-
-El Camino Community College Catalog
-Including:
-Courses (Mainly focusing on this)
-Programs
-Clubs
-
--Search Engine
--Filter System 
-- Add favorite classes, removes favorite classes
-- 
-
--->
 
 <body>
 
       <nav id = "sideNavBar" class="sideNavigation">
         <a href = "home.html">El Camino Catalog</a>
-        <div class="dropdown">
-            <button class="dropButton"> Catalog <i class="fa fa-caret-down"></i></button>
-            <div class="content">
-                <a href = "courses.html">Courses</a>
-                <a href = "programs.html">Programs</a>
-            </div>
-        </div>
-        <a href = "#" class="test">About</a>
-        <a href = "#" class="test">Location/MoreInfo</a>
+        <a href = "courses.html">Courses Catalog</a>
+        <a href = "about.html" class="test">About</a>
+        <a href = "https://www.elcamino.edu/campus-life/directions-and-visit-info/" class="test">Location/MoreInfo</a>
       </nav>
 
     <div class="main-header">
@@ -69,47 +51,65 @@ Clubs
         <h2> Find the courses you need to transfer using IGETC</h2>
         </div>
     </div>
-    <div id="searchArea">
-        <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="searchCourses()">
-        <select style="display: block;" id="filter" oninput="filterCourses()">
-            <option value="English">English</option>
-            <option value="Communication">Communication</option>
-            <option value="Math">Math</option>
-            <option value="Art">Art</option>
-            <option value="Humanities">Humanities</option>
-            <option value="Social and Behavior Sciences">Social and Behavior Sciences</option>
-            <option value="Physical Sciences">Physical Sciences</option>
-            <option value="Biological Sciences">Biological Sciences</option>
-        </select>
-    </div>
-    <div id="aboveSourceSection">
-    <div id="card-container">
-    </div>
-    </div>
-    <div class="card-section">
+
+    <div id="background">
+        <div id="searchArea">
+            <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="searchCourses()">
+            <select style="display: block;" id="filter" oninput="filterCourses()">
+                <option value="English">English</option>
+                <option value="Communication">Communication</option>
+                <option value="Math">Math</option>
+                <option value="Art">Art</option>
+                <option value="Humanities">Humanities</option>
+                <option value="Social and Behavior Sciences">Social and Behavior Sciences</option>
+                <option value="Physical Sciences">Physical Sciences</option>
+                <option value="Biological Sciences">Biological Sciences</option>
+            </select>
+        </div>
+        <div id="aboveSourceSection">
+            <div id="card-container">
+            </div>
+        </div>
         
-    </div>
-    <div class="card" style="display: none;" onclick="func()">
-        <div class="card-content">
-            <h2></h2>
-            <h3></h3>
-            <h4></h4>
-            <p></p>
+        <div class="card-section">
+                
+        </div>
+        
+        <div class="card" style="display: none;" onclick="popUp()">
+            <div class="card-content">
+                <h2></h2>
+                <h3></h3>
+                <h4></h4>
+                <p></p>
+            </div>
+        </div>
+            <div class="popup">
+                <div class="popup-content">
+                <p id = "TEXTFORPOPUP">hi</p>
+                <div>
+                    <button onclick="closeButton()" id = "closebtn">x</button> 
+                    <button onclick="addToFavorite()" id="heartButton">&hearts;</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="popup">
-        <div class="popup-content">
-        <p id = "TEXTFORPOPUP">hi</p>
-        <button onclick="closeButton()" id = "closebtn">x</button>
+    <div id = "divForFav">  
+        <h2>Favorite Courses: &hearts;</h2>
+        <div id = "favorite">
+
         </div>
     </div>
     <div class="footer">
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
+        <div class="footerInfo">
+            <h1>Author: Jason Irie</h1>
+            <h2>jsirie10@gmail.com</h2>
+        </div>
+        <div>
+            <h1 style = "color: rgb(62, 60, 60)">Support</h1>
+            <h2><a href ="about.html" style = "text-decoration: none; color:black">About Us</a></h2>
+            <h2><a href ="https://www.elcamino.edu/contact-us.aspx" style = "text-decoration: none; color:black">Contact Us</a></h2>
+            
+        </div>
     </div>
 </body>
 

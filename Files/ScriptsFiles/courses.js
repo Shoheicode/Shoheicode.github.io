@@ -1,10 +1,15 @@
 //This scripts helps manage the courses and keeps track of that information.
 
-console.log("HIHIHHIHI");
+
+//List of all Favorite Courses which we will use later
 
 let favCourses = [];
 
+//Tree that will store our data
+
 let tree;
+
+// All of our data/Information
 
 let englishCourses = ["Engl 1A", "Engl 1C"]
 let communciationCourses = ["Coms 100", "Coms 120"];
@@ -88,20 +93,25 @@ let courseDes = [englishCourseDescriptions, comsCourseDescriptions, mathCourseDe
 
 let subjects = ["English", "Communication", "Math", "Art", "Humanities", "Social and Behavior Sciences", "Physical Sciences", "Biological Sciences"];
 
+
 //This class here helps store and hold onto Course Data.
+//This includes, subject, courseName, the full course name, course description as well as if the course is your favorite
+
 class CourseData {
     constructor(courseName, courseSubject, fullCourseName, courseDescription){
         this.name = courseName;
         this.subject = courseSubject;
         this.fullCourseName = fullCourseName;
         this.description = courseDescription;
+        this.favorite = false;
     }
     printData(){
         console.log(this.name);
     }
 }
 
-//This Node is needed to make the binary tree
+//This Node is needed to make the binary tree and has a value of CourseData
+
 class Node{
     constructor(CourseData){
         this.data = CourseData;
@@ -111,10 +121,11 @@ class Node{
 }
 
 //This is the binary tree which keeps track of all the data
+
 class BinaryTree {
     #traversingList;
 
-    //Constructor helps build the binary tree to store data
+    //Constructor helps build the binary tree to store data which includes root, size and travsering list
     constructor(){
         this.root = null;
         this.size = 0;
@@ -184,7 +195,7 @@ class BinaryTree {
         return listOfCourses;
     }
 
-    //A helper function that filters for subject
+    //A helper function that filters recusrively for subject
     filterForSubjectNodes(list, node, subject){
         if(node.data.subject == subject){
             list.push(node);
@@ -198,6 +209,7 @@ class BinaryTree {
         }
     }
 
+    //A function that helps find the name of the class and if it is close to the name inputed
     searchForNodeName(name){
         let array = [];
         //console.log(this.root.data.name.toUpperCase().indexOf(name.toUpperCase()));
@@ -213,6 +225,7 @@ class BinaryTree {
         return array;
     }
 
+    //A helper function that helps find the name for the function above recursively
     findNode(arr, node, name){
         //console.log(node.data.name);
         if(node.data.name.toUpperCase().indexOf(name.toUpperCase())> -1){
@@ -227,34 +240,59 @@ class BinaryTree {
         } 
     }
 
-    printRoot(){
-        console.log(this.root.data.printData());
-    }
-
+    //Returns the size of the Binary Tree
     getSize(){
         return this.size;
     }
 
+    //Grabs the node with the specific name (Has to be specific as for the other one, it was based off of closeness)
+    getNode(name){
+        console.log(name);
+        
+        if(this.root.data.name == name){
+            return this.root;
+        }
+        if(this.root.left != null && name < this.root.data.name){
+            return this.helpGetNode(this.root.left, name);
+        }
+        if(this.root.right != null && name > this.root.data.name){
+            return this.helpGetNode(this.root.right, name);
+        }
+
+        return null;
+    }
+
+    //This is a helper function that helps get the node that you want. 
+    helpGetNode(node, name){
+
+        if(node.data.name == name){
+            return node;
+        }
+        if(name < node.data.name && node.left != null){
+            return this.helpGetNode(node.left, name);
+        }
+        if(name > node.data.name && node.right != null){
+            return this.helpGetNode(node.right, name);
+        }
+
+        return null;
+    }
+
+    //Useful function that prints the tree
     printTree(){
-        //this.size = 0;
-        console.log("I AM PRINTING THE TREE");
+
         if(this.root != null){
-            //this.size++;
-            console.log("I AM DOING THINGS");
             console.log(this.root.data.name);
         }
         if(this.root.left != null){
-            console.log("I AM DOING THINGS2");
             this.printTreeA(this.root.left, i);
         }
         if(this.root.right != null){
-            console.log("I AM DOING THINGS3");
             this.printTreeA(this.root.right, i);
         }
-        console.log("I AM DONE");
-        console.log(this.size);
     }
 
+    //Useful helper function that helps print the tree
     printTreeA(node){
         if(node.left != null){
             console.log(node.data.name);
@@ -271,6 +309,7 @@ class BinaryTree {
         }
     }
 
+    //Helper goLeft function that helps when going through tree recursively.
     goLeft(current){
         
         let node = current;
@@ -281,10 +320,12 @@ class BinaryTree {
         
     }
 
+    //If there is a next for the traversingList which is helpful when getting information from binary tree in order
     hasNext(){
         return this.#traversingList.length > 0;
     }
 
+    //Checks if there is a next in the traversing list and if so, to continue on going through the binary tree
     next(){
         if(!this.hasNext()){
             console.log("ERROR");
@@ -301,33 +342,41 @@ class BinaryTree {
 
 }
 
+//Is used to filter the courses
 function filterCourses(){
+
+    //Gets the filtered value from the filter
     filterValue = document.getElementById("filter").value;
     console.log(filterValue);
 
+    //creates an empty list and then runs function for filter in binary tree
     list = [];
     list = tree.filterForSubject(filterValue);
-    console.log(list.length);
 
     updateCards(list);
 }
 
+//Is used to search up courses
 function searchCourses(){
+
+    //Gets searched value from search bar
     searchValue = document.getElementById("searchPart").value;
-    console.log(searchValue);
+
+    //Creates an empty list and then runs the serach function in binary tree
     list = [];
     list = tree.searchForNodeName(searchValue);
-    console.log(list.length);
     
+    //updates cards afterwards
     updateCards(list);
 }
 
+//Is used to update the cards after search/filter
 function updateCards(list){
+
+    //Grabs all the necessary templates from the document.
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML="";
-    //const copyCardSection = document.getElementById("card-section");
     const nextCardSection = document.querySelector(".card-section");
-    //cardContainer.innerHTML = "";
     let a = nextCardSection.cloneNode(true);
     const templateCard = document.querySelector(".card");
 
@@ -339,13 +388,10 @@ function updateCards(list){
         editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
         a.appendChild(nextCard);
         
+        //Only have 3 inside of each card container to look nice
         if(i == 2){
-            //a = nextCardSection.cloneNode(true);
             cardContainer.appendChild(a);
-            //nextCardSection.removeChild();
             a = nextCardSection.cloneNode(true);
-
-            //nextCardSection = cardContainer.firstChild.cloneNode(true);
             i=0;
         }
         else{
@@ -353,24 +399,82 @@ function updateCards(list){
         }
     }
 
+    //If there are any left, add it to the last containter.
     if(i > 0){
+        cardContainer.appendChild(a);
+        a = nextCardSection.cloneNode(true);
+    }
+}
+
+//Updates the favorites cards. Makes sure they are good. 
+
+function updateFavorite(){
+    //Grabs all the necessary templates from the document.
+    const cardContainer = document.getElementById("favorite");
+    const nextCardSection = document.querySelector(".card-section");
+    const templateCard = document.querySelector(".card");
+    let a = nextCardSection.cloneNode(true);
+    
+    cardContainer.innerHTML = "";
+    a.innerHTML = "";
+
+    numberOfCards = 0;
+
+    for(i = 0; i < favCourses.length; i++){
+        let node = tree.getNode(favCourses[i]);
+        const nextCard = templateCard.cloneNode(true);
+        editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
+        a.appendChild(nextCard);
+
+         //Only have 3 cards inside of each card container to look nice
+        if(numberOfCards == 2){;
+            cardContainer.appendChild(a);
+            a = nextCardSection.cloneNode(true);
+            //Resets the a html after clone due to overlap.
+            a.innerHTML = "";
+
+            numberOfCards=0;
+        }
+        else{
+            numberOfCards++;
+        }
+    }
+
+    if(numberOfCards > 0){
         cardContainer.appendChild(a);
         //nextCardSection.removeChild();
         a = nextCardSection.cloneNode(true);
     }
 }
 
-function addCourseToFav(){
+//Adds to the favorite list
+function addToFavorite(){
+    //Gets the button from the document
+    var a = document.querySelector(".popup");
+    var name = a.querySelector("p").querySelector("h2").innerHTML;
+    const heart = document.getElementById("heartButton");
 
+    //Checks if hear is pressed and if so, it will update according
+
+    if(heart.style.color == "red"){
+        heart.style.color = "white";
+        index = favCourses.indexOf(name);
+        favCourses.splice(index, 1); // To remove from favorite list
+        console.log(favCourses.length);
+    }
+    else{
+        heart.style.color = "red";
+        favCourses.push(name); //To add to favorite list
+        console.log(favCourses.length);
+    }    
+
+    //updates the favorites after clicked. 
+    updateFavorite();
 }
 
-function removeCourseFromFav(){
-
-}
-
-let storage;
-
+//Collects all the information and puts it into the binary tree for storage. 
 function gettingInfo(){
+
     tree = new BinaryTree();
     for(i = 0; i < courses.length;i++){
         for(j = 0; j < courses[i].length;j++){
@@ -380,7 +484,7 @@ function gettingInfo(){
     }
     console.log(tree.getSize());
     showCards();
-    func();
+    popUp();
 }
 
 // This function adds cards the page to display the data in the array
@@ -425,49 +529,8 @@ function showCards() {
     }
 }
 
-function showCardsForFilter(filter){
-    const cardContainer = document.getElementById("card-container");
-
-    cardContainer.innerHTML = "";
-    //const copyCardSection = document.getElementById("card-section");
-    const nextCardSection = document.querySelector(".card-section");
-    //cardContainer.innerHTML = "";
-    let a = nextCardSection.cloneNode(true);
-    const templateCard = document.querySelector(".card");
-    
-
-    console.log("I AM DOING A SHOW CARD");
-
-    i = 0;
-
-    while(tree.hasNext()){
-        node = tree.next();
-        const nextCard = templateCard.cloneNode(true);
-        editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
-        a.appendChild(nextCard);
-        
-        if(i == 2){
-            //a = nextCardSection.cloneNode(true);
-            cardContainer.appendChild(a);
-            //nextCardSection.removeChild();
-            a = nextCardSection.cloneNode(true);
-
-            //nextCardSection = cardContainer.firstChild.cloneNode(true);
-            i=0;
-        }
-        else{
-            i++;
-        }
-    }
-
-    if(i > 0){
-        cardContainer.appendChild(a);
-        //nextCardSection.removeChild();
-        a = nextCardSection.cloneNode(true);
-    }
-}
-
-function func(){
+//Shows the pop up icon and updates each of the cards
+function popUp(){
     var listItems = document.querySelectorAll(".card");
     console.log(listItems.length); 
     
@@ -476,20 +539,60 @@ function func(){
            var a = document.querySelector(".popup");
            a.style.display ="flex";
            a.style.justifyContent =  "center";
-           document.getElementById("TEXTFORPOPUP").innerHTML = item.innerHTML;
+
+           var textBox = document.getElementById("TEXTFORPOPUP");
+           textBox.innerHTML = item.innerHTML;
+           textBox.style = "background: linear-gradient(90deg, rgba(110,210,247,0.5804446778711485) 0%, rgba(84,203,252,0.24711134453781514) 100%);"
+
+           var text = textBox.querySelector(".card-content");
+           if(a.querySelector("p").querySelector("h3").innerHTML == "Art" ){
+                text.style.color = "black";
+           }
+           else{
+                text.style.color="yellow";
+           }
+            text.style.fontWeight = "900";
+
+           var boxForContent = document.querySelector(".popup-content");
+           console.log(a.querySelector("p").querySelector("h3").innerHTML);
+           boxForContent.style.backgroundImage = "url('ImageFiles/ImagesForCards/" + a.querySelector("p").querySelector("h3").innerHTML + ".jpg')";
+           boxForContent.style.backgroundRepeat = "no-repeat";
+           boxForContent.style.backgroundSize = "cover";
+
+
+
            const cardDescriptor = a.querySelector("p").querySelector("p");
            cardDescriptor.style.display = "block";
+           var name = a.querySelector("p").querySelector("h2").innerHTML;
+           var subject = a.querySelector("p").querySelector("h4").innerHTML;
+           const heart = document.getElementById("heartButton");
+           console.log(name);
+           if(favCourses.length != 0){
+                console.log(favCourses[0]);
+           }
+
+           if(favCourses.indexOf(name) > -1){
+                console.log("HELLO");
+                heart.style.color ="red";
+           }
+           else{
+                heart.style.color ="white";
+           }
            
         }
     });
 
 }
 
+//Closes the popup when clicked
 function closeButton(){
     var a = document.querySelector(".popup");
     a.style.display = "none";
+    const heart = document.getElementById("heartButton");
+    heart.style.color = "white";
 }
 
+//Creates each of the cards and adds the content.
 function editCardContent(card, courseTitle, subject, nameTitle, description) {
     card.style.display = "block";
 
@@ -504,8 +607,7 @@ function editCardContent(card, courseTitle, subject, nameTitle, description) {
     cardDescriptor.textContent = description;
     
 
-    //console.log("new card:", newTitle, "- html: ", card);
 }
 
-
+//Onload, get the information for the binary tree.
 document.addEventListener("DOMContentLoaded", gettingInfo);

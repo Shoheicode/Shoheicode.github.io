@@ -3,7 +3,7 @@
 
 <head>
     <title>El Camino Catalog</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles">
+    <meta name="description" content="A Catalog of Courses at El Camino">
 
     <!--Font Family-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,45 +21,24 @@
 
     <link rel="stylesheet" href="StyleFiles\style.css" />
     <link rel="stylesheet" href="StyleFiles\opening.css">
-    <link rel="stylesheet" href="StyleFiles\index.css">
+    <link rel="stylesheet" href="StyleFiles\navbar.css">
 
     <!-- Javascript Files -->
     <script type="text/javascript" src="ScriptsFiles\scripts.js">
     </script>
 </head>
 
-<!--
-
-Things to implment:
-
-El Camino Community College Catalog
-Including:
-Courses (Mainly focusing on this)
-Programs
-Clubs
-
--Search Engine
--Filter System 
-- Add favorite classes, removes favorite classes
-- 
-
--->
-
 <body>
 
+    <!-- The Navigation Bar which helps users navigate throught the website.  -->
       <nav id = "sideNavBar" class="sideNavigation">
         <a href = "home.html">El Camino Catalog</a>
-        <div class="dropdown">
-            <button class="dropButton"> Catalog <i class="fa fa-caret-down"></i></button>
-            <div class="content">
-                <a href = "courses.html">Courses</a>
-                <a href = "programs.html">Programs</a>
-            </div>
-        </div>
+        <a href ="courses.html">Courses Catalog</a>
         <a href = "about.html" class="test">About</a>
-        <a href = "#" class="test">Location/MoreInfo</a>
+        <a href = "https://www.elcamino.edu/campus-life/directions-and-visit-info/" class="test">Location/MoreInfo</a>
       </nav>
 
+    <!-- The Main Header (AKA the title card) -->
     <div class="main-header">
         <div class="titleCard">
         <h1 class="title">El Camino Student Catalog</h1>
@@ -67,21 +46,25 @@ Clubs
         </div>
     </div>
 
-    <div class="courseSection">
-        <img id="courseSImage" src = "ImageFiles\e5686235-8b5a-4e2b-b929-03da90882752.jpg">
-        <div id="courseSdiv">
+    <!-- One of the course sections. This one introduces the main componenet of our catalog, the courses catalog -->
+    <div class="section">
+        <img id="sectionImage" src = "ImageFiles\e5686235-8b5a-4e2b-b929-03da90882752.jpg">
+        <div id="sectiondiv">
             <h2 id="courseSText">
                 Learn about our many courses offered at El Camino! And find ones you need for your major and for transfering!
             </h2>
             <a href ="courses.html">Click Here to Learn more!</a>
         </div>
     </div>
-    <div class="courseSection">
-        <div id="courseSdiv">
+
+    <!-- This second section sends you to the programs page on the El Camino Website -->
+    <div class="section">
+        <div id="sectiondiv">
             <h2 id="courseSText">
                Learn more about some programs El Camino has to offered here and find ones that you like and enjoy!
             </h2>
-            <a href ="courses.html">Click Here to Learn more!</a>
+            <!--Was unable to add it but would have been able to store information-->
+            <a href ="https://www.elcamino.edu/academics/">Click Here to Learn more!</a>
             <div class="ProgramsSlideshow">
                 <div class = "programsC" id="MESA">
                     <img class = "programLogo" src = "ImageFiles\ProgramLogos\MESA logo.png">
@@ -94,26 +77,26 @@ Clubs
                 </div>
             </div>
         </div>
-        <img id="courseSImage" src = "ImageFiles\c2.jpg">
+        <img id="sectionImage" src = "ImageFiles\c2.jpg">
     </div>
 
-    <div class="courseSection">
-        <div class="slideshow">
-
-
-        </div>
-
+    <!-- This scripts hold the code for the slideshow, a nice way to show off the programs at El Camino -->
     </div>
     <script src="ScriptsFiles\slideshow.js">
     </script>
 
+    <!-- The Footer of the program which includes contact for elcamino as well as myself. -->
     <div class="footer">
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
+        <div class="footerInfo">
+            <h1>Author: Jason Irie</h1>
+            <h2>jsirie10@gmail.com</h2>
+        </div>
+        <div>
+            <h1 style = "color: rgb(62, 60, 60)">Support</h1>
+            <h2><a href ="about.html" style = "text-decoration: none; color:black">About Us</a></h2>
+            <h2><a href ="https://www.elcamino.edu/contact-us.aspx" style = "text-decoration: none; color:black">Contact Us</a></h2>
+            
+        </div>
     </div>
 </body>
 
