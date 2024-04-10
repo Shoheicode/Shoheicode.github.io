@@ -19,7 +19,7 @@ This is the instructions, requirements, and starter for stage two of the Snap En
 
 ## Each Part of the Website
 
-#Home Page
+# Home Page
 
 ![Image of home page](/assets/home.png)
 
@@ -28,7 +28,7 @@ The home page is where you begin and you are greeted by a welcoming aura and sig
 You will see the navigation bar above which will help you navigate through the website. If you scroll down you will see 2 additional sections which will lead you to the pages for the 
 courses catalog and the programs at El Camino. 
 
-#Catalog Page:
+# Catalog Page:
 
 ![Image of home page](/assets/catalogPage.png)
 
