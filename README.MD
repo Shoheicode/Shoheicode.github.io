@@ -6,7 +6,7 @@ This is the instructions, requirements, and starter for stage two of the Snap En
 
 <h3 align="center">Created an El Camino Catalog Website </h1>
 
-## Requirements - 
+## Requirements:
 
  - Utilzed data structures including binary trees and arrays
  - Created objects to hold data 
