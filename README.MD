@@ -19,7 +19,7 @@ This is the instructions, requirements, and starter for stage two of the Snap En
 
 ## Each Part of the Website
 
-![Image of the web application and what it looks like](/assets/Screenshot 2024-04-09 223036.png)
+![Image of the web application and what it looks like](/assets/catalogPage.png)
 
 
 ## To find the website:
