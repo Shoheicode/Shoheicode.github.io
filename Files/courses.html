@@ -19,14 +19,16 @@
 
     <!-- StyleSheets -->
 
-    <link rel="stylesheet" href="StyleFiles\style.css" />
+    <link rel="stylesheet" href="StyleFiles\courses.css" />
     <link rel="stylesheet" href="StyleFiles\opening.css">
     <link rel="stylesheet" href="StyleFiles\index.css">
 
     <!-- Javascript Files -->
+    <script type="module">
+      </script>
     <script type="text/javascript" src="ScriptsFiles\scripts.js">
     </script>
-    <script type="text/javascript" src="ScriptsFiles\courses.js"></script>
+    <script type ="text/javascript"src="ScriptsFiles\courses.js"></script>
 </head>
 
 <!--
@@ -53,9 +55,8 @@ Clubs
         <div class="dropdown">
             <button class="dropButton"> Catalog <i class="fa fa-caret-down"></i></button>
             <div class="content">
-                <a href = "#">Clubs</a>
-                <a href = "#">Courses</a>
-                <a href = "#">Programs</a>
+                <a href = "courses.html">Courses</a>
+                <a href = "programs.html">Programs</a>
             </div>
         </div>
         <a href = "#" class="test">About</a>
@@ -64,25 +65,42 @@ Clubs
 
     <div class="main-header">
         <div class="titleCard">
-        <h1 class="title">El Camino Student Catalog</h1>
-        <h2> Where you can find all sorts of cool things</h2>
+        <h1 class="title">El Camino Courses Catalog</h1>
+        <h2> Find the courses you need to transfer using IGETC</h2>
         </div>
     </div>
     <div id="searchArea">
-        <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="filterCourses()">
+        <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="searchCourses()">
+        <select style="display: block;" id="filter" oninput="filterCourses()">
+            <option value="English">English</option>
+            <option value="Communication">Communication</option>
+            <option value="Math">Math</option>
+            <option value="Art">Art</option>
+            <option value="Humanities">Humanities</option>
+            <option value="Social and Behavior Sciences">Social and Behavior Sciences</option>
+            <option value="Physical Sciences">Physical Sciences</option>
+            <option value="Biological Sciences">Biological Sciences</option>
+        </select>
     </div>
+    <div id="aboveSourceSection">
     <div id="card-container">
+    </div>
+    </div>
+    <div class="card-section">
         
     </div>
-    <div class="card" style="display: none;">
+    <div class="card" style="display: none;" onclick="func()">
         <div class="card-content">
-            <h2>TV Show Title</h2>
-            <img src="" alt="TV Show Poster">
-            <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
-            </ul>
+            <h2></h2>
+            <h3></h3>
+            <h4></h4>
+            <p></p>
+        </div>
+    </div>
+    <div class="popup">
+        <div class="popup-content">
+        <p id = "TEXTFORPOPUP">hi</p>
+        <button onclick="closeButton()" id = "closebtn">x</button>
         </div>
     </div>
     <div class="footer">

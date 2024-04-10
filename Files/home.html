@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>LA TV Shows | Home</title>
+    <title>El Camino Catalog</title>
     <meta name="description" content="A Catalog of Shows Set in Los Angeles">
 
     <!--Font Family-->
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- StyleSheets -->
 
@@ -52,12 +52,11 @@ Clubs
         <div class="dropdown">
             <button class="dropButton"> Catalog <i class="fa fa-caret-down"></i></button>
             <div class="content">
-                <a href = "#">Clubs</a>
                 <a href = "courses.html">Courses</a>
-                <a href = "#">Programs</a>
+                <a href = "programs.html">Programs</a>
             </div>
         </div>
-        <a href = "#" class="test">About</a>
+        <a href = "about.html" class="test">About</a>
         <a href = "#" class="test">Location/MoreInfo</a>
       </nav>
 
@@ -67,26 +66,47 @@ Clubs
         <h2> Where you can find all sorts of cool things</h2>
         </div>
     </div>
-    <div id="searchArea">
-        <form onsubmit="click()">
-            <input id="searchPart" type="text" placeholder="Search" name = "searchbar">
-           
-        </form>
-    </div>
-    <div id="card-container">
-        
-    </div>
-    <div class="card" style="display: none;">
-        <div class="card-content">
-            <h2>TV Show Title</h2>
-            <img src="" alt="TV Show Poster">
-            <ul>
-                <li>Bullet Point 1</li>
-                <li>Bullet Point 2</li>
-                <li>Bullet Point 3</li>
-            </ul>
+
+    <div class="courseSection">
+        <img id="courseSImage" src = "ImageFiles\e5686235-8b5a-4e2b-b929-03da90882752.jpg">
+        <div id="courseSdiv">
+            <h2 id="courseSText">
+                Learn about our many courses offered at El Camino! And find ones you need for your major and for transfering!
+            </h2>
+            <a href ="courses.html">Click Here to Learn more!</a>
         </div>
     </div>
+    <div class="courseSection">
+        <div id="courseSdiv">
+            <h2 id="courseSText">
+               Learn more about some programs El Camino has to offered here and find ones that you like and enjoy!
+            </h2>
+            <a href ="courses.html">Click Here to Learn more!</a>
+            <div class="ProgramsSlideshow">
+                <div class = "programsC" id="MESA">
+                    <img class = "programLogo" src = "ImageFiles\ProgramLogos\MESA logo.png">
+                </div>
+                <div class = "programsC">
+                    <img class = "programLogo" src="ImageFiles\ProgramLogos\images-removebg-preview.png">
+                </div>
+                <div class = "programsC">
+                    <img class = "programLogo" src="ImageFiles\ProgramLogos\south-bay-promise-logo-removebg-preview.png">
+                </div>
+            </div>
+        </div>
+        <img id="courseSImage" src = "ImageFiles\c2.jpg">
+    </div>
+
+    <div class="courseSection">
+        <div class="slideshow">
+
+
+        </div>
+
+    </div>
+    <script src="ScriptsFiles\slideshow.js">
+    </script>
+
     <div class="footer">
         <button onclick="quoteAlert();">
             Get A Quote!

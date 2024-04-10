@@ -70,49 +70,49 @@ let titles = [
 
 
 // This function adds cards the page to display the data in the array
-function showCards() {
-    const cardContainer = document.getElementById("card-container");
-    cardContainer.innerHTML = "";
-    const templateCard = document.querySelector(".card");
+// function showCards() {
+//     const cardContainer = document.getElementById("card-container");
+//     cardContainer.innerHTML = "";
+//     const templateCard = document.querySelector(".card");
     
-    for (let i = 0; i < titles.length; i++) {
-        let title = titles[i];
+//     for (let i = 0; i < titles.length; i++) {
+//         let title = titles[i];
 
-        // This part of the code doesn't scale very well! After you add your
-        // own data, you'll need to do something totally different here.
-        let imageURL = "";
-        if (i == 0) {
-            imageURL = FRESH_PRINCE_URL;
-        } else if (i == 1) {
-            imageURL = CURB_POSTER_URL;
-        } else if (i == 2) {
-            imageURL = EAST_LOS_HIGH_POSTER_URL;
-        }
+//         // This part of the code doesn't scale very well! After you add your
+//         // own data, you'll need to do something totally different here.
+//         let imageURL = "";
+//         if (i == 0) {
+//             imageURL = FRESH_PRINCE_URL;
+//         } else if (i == 1) {
+//             imageURL = CURB_POSTER_URL;
+//         } else if (i == 2) {
+//             imageURL = EAST_LOS_HIGH_POSTER_URL;
+//         }
 
-        const nextCard = templateCard.cloneNode(true); // Copy the template card
-        editCardContent(nextCard, title, imageURL); // Edit title and image
-        cardContainer.appendChild(nextCard); // Add new card to the container
-    }
-}
+//         const nextCard = templateCard.cloneNode(true); // Copy the template card
+//         editCardContent(nextCard, title, imageURL); // Edit title and image
+//         cardContainer.appendChild(nextCard); // Add new card to the container
+//     }
+// }
 
-function editCardContent(card, newTitle, newImageURL) {
-    card.style.display = "block";
+// function editCardContent(card, newTitle, newImageURL) {
+//     card.style.display = "block";
 
-    const cardHeader = card.querySelector("h2");
-    cardHeader.textContent = newTitle;
+//     const cardHeader = card.querySelector("h2");
+//     cardHeader.textContent = newTitle;
 
-    const cardImage = card.querySelector("img");
-    cardImage.src = newImageURL;
-    cardImage.alt = newTitle + " Poster";
+//     const cardImage = card.querySelector("img");
+//     cardImage.src = newImageURL;
+//     cardImage.alt = newTitle + " Poster";
 
-    // You can use console.log to help you debug!
-    // View the output by right clicking on your website,
-    // select "Inspect", then click on the "Console" tab
-    console.log("new card:", newTitle, "- html: ", card);
-}
+//     // You can use console.log to help you debug!
+//     // View the output by right clicking on your website,
+//     // select "Inspect", then click on the "Console" tab
+//     console.log("new card:", newTitle, "- html: ", card);
+// }
 
 // This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+//document.addEventListener("DOMContentLoaded", showCards);
 
 function quoteAlert() {
     console.log("Button Clicked!")
@@ -126,4 +126,14 @@ function removeLastCard() {
 
 function closeDoor(){
     document.getElementById("opening").style.width = 0;
+}
+
+//For index.html page:
+function textSlide(){
+    let i;
+    let texts = document.getElementsByClassName("programsC");
+    for(i = 0; i < texts.length;i++){
+        console.log("HIHIHIHIH");
+    }
+    console.log("Hello" + texts.length);
 }
