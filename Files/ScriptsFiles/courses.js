@@ -1,5 +1,8 @@
 //This scripts helps manage the courses and keeps track of that information.
 
+import {read} from "./index.js";
+
+let readData;
 
 //List of all Favorite Courses which we will use later
 
@@ -344,30 +347,39 @@ class BinaryTree {
 
 //Is used to filter the courses
 function filterCourses(){
+    const filter = document.getElementById("filter");
 
-    //Gets the filtered value from the filter
-    filterValue = document.getElementById("filter").value;
-    console.log(filterValue);
+    filter.oninput = function(e){
+        //Gets the filtered value from the filter
+        let filterValue = document.getElementById("filter").value;
+        console.log(filterValue);
 
-    //creates an empty list and then runs function for filter in binary tree
-    list = [];
-    list = tree.filterForSubject(filterValue);
+        //creates an empty list and then runs function for filter in binary tree
+        let list = [];
+        console.log(list.length);
+        list = tree.filterForSubject(filterValue);
+        console.log(list.length);
 
-    updateCards(list);
+        updateCards(list);
+    }
 }
 
 //Is used to search up courses
 function searchCourses(){
 
-    //Gets searched value from search bar
-    searchValue = document.getElementById("searchPart").value;
+    var searchComponent = document.getElementById("searchPart");
 
-    //Creates an empty list and then runs the serach function in binary tree
-    list = [];
-    list = tree.searchForNodeName(searchValue);
-    
-    //updates cards afterwards
-    updateCards(list);
+    searchComponent.oninput = function(e){
+        //Gets searched value from search bar
+        let searchValue = document.getElementById("searchPart").value;
+
+        //Creates an empty list and then runs the serach function in binary tree
+        let list = [];
+        list = tree.searchForNodeName(searchValue);
+        
+        //updates cards afterwards
+        updateCards(list);
+    }
 }
 
 //Is used to update the cards after search/filter
@@ -380,10 +392,10 @@ function updateCards(list){
     let a = nextCardSection.cloneNode(true);
     const templateCard = document.querySelector(".card");
 
-    i = 0;
+    let i = 0;
 
-    for(j = 0; j < list.length;j++){
-        node = list[j];
+    for(let j = 0; j < list.length;j++){
+        let node = list[j];
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
         a.appendChild(nextCard);
@@ -418,9 +430,9 @@ function updateFavorite(){
     cardContainer.innerHTML = "";
     a.innerHTML = "";
 
-    numberOfCards = 0;
+    let numberOfCards = 0;
 
-    for(i = 0; i < favCourses.length; i++){
+    for(let i = 0; i < favCourses.length; i++){
         let node = tree.getNode(favCourses[i]);
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
@@ -450,15 +462,16 @@ function updateFavorite(){
 //Adds to the favorite list
 function addToFavorite(){
     //Gets the button from the document
-    var a = document.querySelector(".popup");
-    var name = a.querySelector("p").querySelector("h2").innerHTML;
     const heart = document.getElementById("heartButton");
 
-    //Checks if hear is pressed and if so, it will update according
+    heart.onclick = function(e){
+            //Checks if hear is pressed and if so, it will update according
+            var a = document.querySelector(".popup");
+            var name = a.querySelector("p").querySelector("h2").innerHTML;
 
     if(heart.style.color == "red"){
         heart.style.color = "white";
-        index = favCourses.indexOf(name);
+        let index = favCourses.indexOf(name);
         favCourses.splice(index, 1); // To remove from favorite list
         console.log(favCourses.length);
     }
@@ -470,21 +483,29 @@ function addToFavorite(){
 
     //updates the favorites after clicked. 
     updateFavorite();
+        
+    };
 }
 
+let x;
 //Collects all the information and puts it into the binary tree for storage. 
 function gettingInfo(){
 
     tree = new BinaryTree();
-    for(i = 0; i < courses.length;i++){
-        for(j = 0; j < courses[i].length;j++){
-            data = new CourseData(courses[i][j], subjects[i], courseName[i][j], courseDes[i][j]);
+    for(let i = 0; i < courses.length;i++){
+        for(let j = 0; j < courses[i].length;j++){
+            let data = new CourseData(courses[i][j], subjects[i], courseName[i][j], courseDes[i][j]);
             tree.insertNode(data);
         }
     }
     console.log(tree.getSize());
     showCards();
     popUp();
+    closeButton();
+    addToFavorite();
+    filterCourses();
+    searchCourses();
+
 }
 
 // This function adds cards the page to display the data in the array
@@ -500,10 +521,10 @@ function showCards() {
 
     console.log("I AM DOING A SHOW CARD");
 
-    i = 0;
+    let i = 0;
 
     while(tree.hasNext()){
-        node = tree.next();
+        let node = tree.next();
         const nextCard = templateCard.cloneNode(true);
         editCardContent(nextCard, node.data.name, node.data.subject, node.data.fullCourseName, node.data.description);
         a.appendChild(nextCard);
@@ -527,6 +548,21 @@ function showCards() {
         //nextCardSection.removeChild();
         a = nextCardSection.cloneNode(true);
     }
+}
+
+function closeButton(){
+    var closeBtn = document.getElementById("closebtn");
+
+    closeBtn.onclick = function(e){
+        console.log("HIHIHIHI");
+        var a = document.querySelector(".popup");
+        a.style.display = "none";
+        const heart = document.getElementById("heartButton");
+        heart.style.color = "white";
+    }
+
+
+
 }
 
 //Shows the pop up icon and updates each of the cards
@@ -585,15 +621,16 @@ function popUp(){
 }
 
 //Closes the popup when clicked
-function closeButton(){
-    var a = document.querySelector(".popup");
-    a.style.display = "none";
-    const heart = document.getElementById("heartButton");
-    heart.style.color = "white";
-}
+// function closeButton(){
+//     var a = document.querySelector(".popup");
+//     a.style.display = "none";
+//     const heart = document.getElementById("heartButton");
+//     heart.style.color = "white";
+// }
 
 //Creates each of the cards and adds the content.
-function editCardContent(card, courseTitle, subject, nameTitle, description) {
+async function editCardContent(card, courseTitle, subject, nameTitle, description) {
+    console.log("HIHIIHIHI");
     card.style.display = "block";
 
     const cardHeader = card.querySelector("h2");
@@ -603,8 +640,11 @@ function editCardContent(card, courseTitle, subject, nameTitle, description) {
     cardDescriptor.style.display = "none";
     cardHeader.textContent = courseTitle;
     cardSecondHeader.textContent = subject;
-    cardName.textContent = nameTitle
-    cardDescriptor.textContent = description;
+    cardName.textContent = nameTitle;
+    //console.log(courseTitle.replace(/\s/g, ""));
+    readData = await read();//.then(function(value) {readData= value;});
+    console.log(readData);
+    cardDescriptor.textContent = readData;
     
 
 }

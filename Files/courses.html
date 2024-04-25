@@ -24,16 +24,12 @@
     <link rel="stylesheet" href="StyleFiles\navbar.css">
 
     <!-- Javascript Files -->
-    <script type="module">
-      </script>
     <script type="text/javascript" src="ScriptsFiles\scripts.js">
     </script>
-    <script type ="text/javascript"src="ScriptsFiles\courses.js">
-        let icon = document.querySelector('ion-icon');
-    icon.onclick = function(){
-    icon.classList.toggle('active');
-    }
+    <script type ="module" src = "ScriptsFiles/index.js"></script>
+    <script type ="module" src="ScriptsFiles\courses.js">
     </script>
+    <script type ="type/javascript" src = "ScriptsFiles/courses.js"></script>
 </head>
 
 <body>
@@ -54,8 +50,8 @@
 
     <div id="background">
         <div id="searchArea">
-            <input id="searchPart" type="text" placeholder="Search" name = "searchbar" onkeyup="searchCourses()">
-            <select style="display: block;" id="filter" oninput="filterCourses()">
+            <input id="searchPart" type="text" placeholder="Search" name = "searchbar">
+            <select style="display: block;" id="filter">
                 <option value="English">English</option>
                 <option value="Communication">Communication</option>
                 <option value="Math">Math</option>
@@ -87,8 +83,8 @@
                 <div class="popup-content">
                 <p id = "TEXTFORPOPUP">hi</p>
                 <div>
-                    <button onclick="closeButton()" id = "closebtn">x</button> 
-                    <button onclick="addToFavorite()" id="heartButton">&hearts;</button>
+                    <button id = "closebtn">x</button> 
+                    <button id="heartButton">&hearts;</button>
                 </div>
             </div>
         </div>
